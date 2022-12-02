@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{page_name}}</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Owner</th>
+    <th>Is public?</th>
+    <th>Is protected?</th>
+  </tr>
+  {% for id, owner, title, content, is_public, is_protected, password in shporas %}
+    <tr>
+      <td class="title"><a href="/shpora?id={{id}}">{{title}}</a></td>
+      <td class="owner">{{owner}}</td>
+      <td class="is_public">{{"Yes" if is_public else "No"}}</td>
+      <td class="is_protected">{{"Yes" if is_protected else "No"}}</td>
+    </tr>
+  {% endfor %}
+</table>
+{% endblock %}

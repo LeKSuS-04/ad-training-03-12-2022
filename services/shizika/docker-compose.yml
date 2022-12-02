@@ -1,7 +1,7 @@
 version: "2.4"
 
 services:
-  example:
+  shizika:
     restart: unless-stopped
     build: .
     pids_limit: 256

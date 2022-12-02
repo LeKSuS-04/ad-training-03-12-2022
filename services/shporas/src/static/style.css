@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Courier New", monospace;
+}
+
+nav {
+  width: calc(100vw - 1em);
+  background-color: #242424;
+  padding: 0 0.5em;
+  margin-bottom: 2em;
+}
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+nav a,
+nav span {
+  display: inline-block;
+  padding: 1em 0.5em;
+  color: white;
+}
+nav span {
+  color: #2a9d8f;
+}
+
+ul.flashes {
+  list-style: none;
+  width: calc(100vw - 10em);
+  margin: -1.5em 5em 2em 5em;
+  display: flex;
+  flex-direction: column;
+}
+ul.flashes li {
+  background-color: #e76f51;
+  margin: 0.5em 0;
+  padding: 0.8em 1.6em;
+  border-radius: 0.4em;
+}
+
+main {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  margin-bottom: 0.5em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+form .checkbox-container,
+form .input-container {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+form .checkbox-container,
+form .button-container {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-around;
+}
+form input[type="text"],
+form input[type="password"],
+form textarea {
+  font-size: 1em;
+  width: 20em;
+  padding: 0.2em 0.4em;
+}
+form textarea {
+  resize: none;
+  height: 15em;
+}
+form textarea::-webkit-scrollbar {
+  display: none;
+}
+form button {
+  background-color: #2a9d8f;
+  padding: 0.8em 1.6em;
+  border-radius: 0.4em;
+  outline: none;
+  border: none;
+  transition-duration: 0.3s;
+}
+form button:hover {
+  background-color: #264653;
+  cursor: pointer;
+}
+
+table th,
+table td {
+  min-width: 10em;
+  padding: 0.3em;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+table a {
+  color: #2a9d8f;
+}

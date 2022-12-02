@@ -1,0 +1,13 @@
+version: "2.4"
+
+services:
+  shporas:
+    restart: unless-stopped
+    build: .
+    pids_limit: 256
+    mem_limit: 64M
+    cpus: 0.5
+    volumes:
+      - ./data:/app/data
+    ports:
+      - 5000:5000
