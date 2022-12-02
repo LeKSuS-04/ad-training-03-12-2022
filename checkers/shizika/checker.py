@@ -84,7 +84,7 @@ class Checker(BaseChecker):
             self.cquit(Status.OK, secret_id, f'{secret_id}:{secret_password}')
         elif vuln == '2':
             self.leave_feedback(r, flag)
-            self.cquit(Status.OK, 'no_data')
+            self.cquit(Status.OK)
         else:
             self.cquit(Status.ERROR, 'Checker error', f'Unexpected vuln value: {vuln}')
 
