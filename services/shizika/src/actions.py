@@ -11,9 +11,9 @@ ACTIONS_PROMPT = '''What do you want to do?
 3. Exit
 > '''
 
+
 def random_string(length: int) -> str:
     return ''.join(random.choice(ascii_letters + digits) for _ in range(length))
-
 
 
 async def prompt_for_action(reader: StreamReader, writer: StreamWriter, min_option: int, max_option: int) -> int:
@@ -69,5 +69,5 @@ async def feedback(reader: StreamReader, writer: StreamWriter):
         await send_message(writer, 'Invalid feedback, but thank you anyways!\n')
         return
 
-    os.system(f'echo "{feedback}\n" >> feedback/feedback-db.txt')
+    os.system(f'echo "{feedback}" >> feedback/feedback-db.txt')
     await send_message(writer, 'Thank you for your feedback!\n')
