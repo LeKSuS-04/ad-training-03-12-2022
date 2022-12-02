@@ -3,8 +3,9 @@
 import re
 import sys
 from typing import Union
+argv = [c for c in sys.argv]        # https://docs.pwntools.com/en/stable/args.html :)))))))))))
 
-from pwn import *
+from pwn import remote, PwnlibException, context
 from checklib import *
 
 PORT = 1337
@@ -108,9 +109,9 @@ class Checker(BaseChecker):
 
 
 if __name__ == '__main__':
-    c = Checker(sys.orig_argv[2])
+    c = Checker(argv[2])
 
     try:
-        c.action(sys.orig_argv[1], *sys.orig_argv[3:])
+        c.action(argv[1], *argv[3:])
     except c.get_check_finished_exception():
         cquit(Status(c.status), c.public, c.private)
