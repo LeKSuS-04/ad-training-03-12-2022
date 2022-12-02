@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  example:
+    restart: unless-stopped
+    build: .
+    pids_limit: 256
+    mem_limit: 64M
+    cpus: 0.5
+    volumes:
+      - ./secrets:/app/secrets
+      - ./feedback:/app/feedback
+    ports:
+      - 1337:1337
+
+  cleaner:
+    image: c4tbuts4d/dedcleaner:latest
+    restart: unless-stopped
+    volumes:
+      - "./secrets:/secrets"
+      - "./feedback:/feedback"
+    environment:
+      - DELETE_AFTER=30m
+      - SLEEP=30m
+      - DIRS=/secrets,/feedback
