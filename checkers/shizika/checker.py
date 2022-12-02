@@ -7,14 +7,13 @@ from typing import Union
 from pwn import *
 from checklib import *
 
-
 PORT = 1337
 context.log_level = 'critical'
 
 
 class Checker(BaseChecker):
     vulns: int = 2
-    timout: int = 10
+    timeout: int = 10
     uses_attack_data: bool = True
 
     def __init__(self, *args, **kwargs):
@@ -109,9 +108,9 @@ class Checker(BaseChecker):
 
 
 if __name__ == '__main__':
-    c = Checker(sys.argv[2])
+    c = Checker(sys.orig_argv[2])
 
     try:
-        c.action(sys.argv[1], *sys.argv[3:])
+        c.action(sys.orig_argv[1], *sys.orig_argv[3:])
     except c.get_check_finished_exception():
         cquit(Status(c.status), c.public, c.private)
