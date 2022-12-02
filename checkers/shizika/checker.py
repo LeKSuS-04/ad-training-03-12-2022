@@ -112,6 +112,7 @@ if __name__ == '__main__':
     c = Checker(sys.argv[2])
 
     try:
+        print(sys.argv)
         c.action(sys.argv[1], *sys.argv[3:])
     except c.get_check_finished_exception():
         cquit(Status(c.status), c.public, c.private)
