@@ -2,6 +2,7 @@
 
 import re
 import sys
+from typing import Union
 
 from pwn import *
 from checklib import *
@@ -99,7 +100,7 @@ class Checker(BaseChecker):
 
         self.cquit(Status.OK)
 
-    def cquit(self, status: Status, public: str = '', private: str | None = None):
+    def cquit(self, status: Status, public: str = '', private: Union[str, None] = None):
         for sess in self._pwn_sessions:
             sess.close()
         self._pwn_sessions = []
