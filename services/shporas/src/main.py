@@ -30,7 +30,7 @@ def get_user_from_session():
 
     username = decode_session(session)
     cur = get_db().cursor()
-    cur.execute('SELECT * FROM users WHERE username = ?', (username,))
+    cur.execute(f'SELECT * FROM users WHERE username = "{username}"')
     user = cur.fetchone()
     if not user:
         return
@@ -135,7 +135,7 @@ def all_shporas():
 @login_required
 def my_shporas_view():
     cur = get_db().cursor()
-    cur.execute(f'SELECT * FROM shporas WHERE owner = "{g.username}"')
+    cur.execute(f'SELECT * FROM shporas WHERE owner = ?', (g.username, ))
     shporas = cur.fetchall()
     return render_template(
         'shporas-table.html', page_name='Your shporas', shporas=shporas
@@ -176,10 +176,9 @@ def create_view():
 def create_handle():
     title = request.form.get('title')
     content = request.form.get('content')
-    is_private = request.form.get('is_private')
+    is_public = request.form.get('is_public')
     is_protected = request.form.get('is_protected')
     password = request.form.get('password')
-    print(f'{title=}, {content=}, {is_private=}, {is_protected=}, {password=}')
 
     if not title or not content:
         flash('Title and content are required')
@@ -195,7 +194,7 @@ def create_handle():
             g.username,
             title,
             content,
-            0 if is_private else 1,
+            1 if is_public else 0,
             1 if is_protected else 0,
             password,
         ),

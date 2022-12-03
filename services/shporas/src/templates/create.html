@@ -11,9 +11,9 @@
     <label for="content">Content</label>
     <textarea type="text" id="content" name="content" placeholder="2 + 2 = 4"></textarea>
   </div>
-  <div id="private-box" class="checkbox-container">
-    <label for="is_private">Private</label>
-    <input type="checkbox" id="is-private" name="is_private" >
+  <div id="public-box" class="checkbox-container">
+    <label for="is_public">Public</label>
+    <input type="checkbox" id="is-public" name="is_public" checked>
   </div>
   <div id="protected-box" class="checkbox-container" style="display: none">
     <label for="is_protected">Protected</label>
@@ -29,19 +29,19 @@
 </form>
 
 <script>
-  const privateCheckbox = document.querySelector("#is-private");
+  const publicCheckbox = document.querySelector("#is-public");
   const protectedCheckbox = document.querySelector("#is-protected");
-  const privateBox = document.querySelector("#private-box");
+  const publicBox = document.querySelector("#public-box");
   const protectedBox = document.querySelector("#protected-box");
   const passwordBox = document.querySelector("#password-box");
 
-  privateCheckbox.addEventListener('change', (event) => {
+  publicCheckbox.addEventListener('change', (event) => {
     if (event.currentTarget.checked) {
-      protectedBox.style.display = 'flex';
-      passwordBox.style.display = protectedCheckbox.checked ? 'flex' : 'none';
-    } else {
       protectedBox.style.display = 'none';
       passwordBox.style.display = 'none';
+    } else {
+      protectedBox.style.display = 'flex';
+      passwordBox.style.display = protectedCheckbox.checked ? 'flex' : 'none';
     }
   })
 
