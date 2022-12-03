@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}" />
+    <title>Shporas</title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <div>
+          <a href="/">Home</a>
+          <a href="/all-shporas">All shporas</a>
+          {% if g.username %}
+            <a href="/my-shporas">Your shporas</a>
+            <a href="/create-shpora">Create shpora</a>
+          {% endif %}
+        </div>
+
+        <div>
+          {% if g.username %}
+            <span>{{g.username}}</span>
+            <a href="/logout">Log out</a>
+          {% else %}
+            <a href="/login">Log in</a>
+            <a href="/sign-up">Sign up</a>
+          {% endif %}
+        </div>
+      </ul>
+    </nav>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

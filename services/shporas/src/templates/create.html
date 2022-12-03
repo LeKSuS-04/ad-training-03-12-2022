@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Create new shpora</h1>
+<form method="POST" action="/create-shpora">
+  <div class="input-container">
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" placeholder="auauaouaaoaoaoua">
+  </div>
+  <div class="input-container">
+    <label for="content">Content</label>
+    <textarea type="text" id="content" name="content" placeholder="2 + 2 = 4"></textarea>
+  </div>
+  <div id="public-box" class="checkbox-container">
+    <label for="is_public">Public</label>
+    <input type="checkbox" id="is-public" name="is_public" checked>
+  </div>
+  <div id="protected-box" class="checkbox-container" style="display: none">
+    <label for="is_protected">Protected</label>
+    <input type="checkbox" id="is-protected" name="is_protected">
+  </div>
+  <div id="password-box" class="input-container" style="display: none">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="bababa bebebe">
+  </div>
+  <div class="button-container">
+    <button>Create shpora 🤯</button>
+  </div>
+</form>
+
+<script>
+  const publicCheckbox = document.querySelector("#is-public");
+  const protectedCheckbox = document.querySelector("#is-protected");
+  const publicBox = document.querySelector("#public-box");
+  const protectedBox = document.querySelector("#protected-box");
+  const passwordBox = document.querySelector("#password-box");
+
+  publicCheckbox.addEventListener('change', (event) => {
+    if (event.currentTarget.checked) {
+      protectedBox.style.display = 'none';
+      passwordBox.style.display = 'none';
+    } else {
+      protectedBox.style.display = 'flex';
+      passwordBox.style.display = protectedCheckbox.checked ? 'flex' : 'none';
+    }
+  })
+
+  protectedCheckbox.addEventListener('change', (event) => {
+    if (event.currentTarget.checked) {
+      passwordBox.style.display = 'flex';
+    } else {
+      passwordBox.style.display = 'none';
+    }
+  })
+</script>
+{% endblock %}
