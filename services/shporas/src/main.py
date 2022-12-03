@@ -30,7 +30,7 @@ def get_user_from_session():
 
     username = decode_session(session)
     cur = get_db().cursor()
-    cur.execute(f'SELECT * FROM users WHERE username = "{username}"')
+    cur.execute(f'SELECT * FROM users WHERE username = ?', (username, ))
     user = cur.fetchone()
     if not user:
         return
@@ -135,7 +135,7 @@ def all_shporas():
 @login_required
 def my_shporas_view():
     cur = get_db().cursor()
-    cur.execute(f'SELECT * FROM shporas WHERE owner = ?', (g.username, ))
+    cur.execute(f'SELECT * FROM shporas WHERE owner = "{g.username}"')
     shporas = cur.fetchall()
     return render_template(
         'shporas-table.html', page_name='Your shporas', shporas=shporas
