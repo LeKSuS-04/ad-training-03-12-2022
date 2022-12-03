@@ -60,7 +60,6 @@ class Checker(BaseChecker):
         password = rnd_password()
         title = rnd_string(20)
         shpora_password = rnd_password()
-        
         if vuln in '123456':
             self.chm.signup(username, password)
             
