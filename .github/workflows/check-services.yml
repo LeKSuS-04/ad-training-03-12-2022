@@ -36,6 +36,7 @@ jobs:
       matrix:
         service:
         - shizika
+        - shporas
 
     steps:
     - uses: actions/checkout@v2
