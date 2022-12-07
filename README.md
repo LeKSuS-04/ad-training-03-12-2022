@@ -11,7 +11,7 @@ Small beginner-friendly training before M\*CTF 2022 for LK CTF team
 
 ## Infrastructure
 
-- DevOps: [@LeKSuS-04](https://github.com/LeKSuS-04)
+- DevOps: [@LeKSuS](https://github.com/LeKSuS-04)
 - Checksystem: [ForcAD](https://github.com/pomo-mondreganto/ForcAD)
 
 ## Writeups
